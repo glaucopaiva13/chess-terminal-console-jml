@@ -1,15 +1,22 @@
 package br.com.chess.game.boardgame;
 
 public class Position {
-    private int row;
-    private int column;
+    private /*@ spec_public @*/ int row;
+    private /*@ spec_public @*/ int column;
 
+    /*@ public normal_behavior
+      @ ensures this.row == row;
+      @ ensures this.column == column;
+      @*/
     public Position(int row, int column) {
         this.row = row;
         this.column = column;
     }
 
-    public int getRow() {
+    /*@ public normal_behavior
+      @ ensures \result == row;
+      @*/
+    public /*@ pure @*/ int getRow() {
         return row;
     }
 
@@ -17,7 +24,10 @@ public class Position {
         this.row = row;
     }
 
-    public int getColumn() {
+    /*@ public normal_behavior
+    @ ensures \result == column;
+    @*/
+    public /*@ pure @*/int getColumn() {
         return column;
     }
 
@@ -31,7 +41,7 @@ public class Position {
     }
 
     @Override
-    public String toString() {
+    public /*@ skipesc @*/String toString() {
         return row + ", " + column;
     }
 }
