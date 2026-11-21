@@ -2,6 +2,8 @@ package br.com.chess.game.boardgame;
 
 import br.com.chess.game.boardgame.exceptions.BoardException;
 
+// CONCLUÍDO
+
 public class Board {
     private /*@ spec_public non_null @*/ Integer rows;
     private /*@ spec_public non_null @*/ Integer columns;
@@ -95,6 +97,8 @@ public class Board {
       @*/
     public void placePiece(Piece piece, Position position) {
         // por algum motivo, dá muito problema com o operador "+" do Java e do override metodo toString, tive que mudar
+        // UPDATE: Atualizando o comentário acima, basicamente o metodo toString() possui vários side-effects
+        // Por isso, no geral não é possível utilizá-lo em especificações JML
         if (thereIsAPiece(position)) {
             throw new BoardException("Já existe uma peça na posição.");
         }
