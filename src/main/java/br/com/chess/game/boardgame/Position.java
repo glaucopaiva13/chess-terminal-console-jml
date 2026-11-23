@@ -10,7 +10,7 @@ public class Position {
       @ ensures this.row == row;
       @ ensures this.column == column;
       @*/
-    public Position(int row, int column) {
+    public /*@ pure @*/ Position(int row, int column) {
         this.row = row;
         this.column = column;
     }
