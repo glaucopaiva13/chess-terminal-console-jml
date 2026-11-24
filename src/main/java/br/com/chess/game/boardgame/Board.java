@@ -62,7 +62,7 @@ public class Board {
       @ requires !positionExists(row, column);
       @ signals_only BoardException;
       @*/
-    public /*@ pure nullable @*/ Piece piece(Integer row, Integer column) {
+    public /*@ spec_pure nullable @*/ Piece piece(Integer row, Integer column) {
         if (!positionExists(row, column)) {
             throw new BoardException("A posição fora do tabuleiro");
         }
@@ -77,7 +77,7 @@ public class Board {
       @ requires !positionExists(position);
       @ signals_only BoardException;
       @*/
-    public /*@ pure nullable @*/ Piece piece(Position position) {
+    public /*@ spec_pure nullable @*/ Piece piece(Position position) {
         if (!positionExists(position)) {
             throw new BoardException("A posição fora do tabuleiro");
         }

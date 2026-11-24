@@ -38,7 +38,7 @@ public class ChessPosition {
     @ ensures \result == row;
     @ assignable \nothing;
     @*/
-    public /*@ pure @*/ Integer getRow() {
+    public /*@ spec_pure @*/ Integer getRow() {
         return row;
     }
 

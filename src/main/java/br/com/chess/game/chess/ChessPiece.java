@@ -24,7 +24,7 @@ public abstract class ChessPiece extends Piece {
     @ ensures \result == color;
     @ assignable \nothing;
     @*/
-    public /*@ pure @*/ Color getColor() {
+    public /*@ spec_pure @*/ Color getColor() {
         return color;
     }
 
