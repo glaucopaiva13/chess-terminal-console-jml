@@ -31,7 +31,7 @@ public abstract class ChessPiece extends Piece {
 
     /*@ public normal_behavior
     @ ensures \result == moveCount;
-    @ assignable \nothing
+    @ assignable \nothing;
     @*/
     public /*@ pure @*/ int getMoveCount() {
         return moveCount;
