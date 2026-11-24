@@ -56,6 +56,7 @@ public class Board {
     /*@ public normal_behavior
       @ requires positionExists(row, column);
       @ ensures \result == pieces[row][column];
+      @ assignable \nothing;
       @ also
       @ public exceptional_behavior
       @ requires !positionExists(row, column);

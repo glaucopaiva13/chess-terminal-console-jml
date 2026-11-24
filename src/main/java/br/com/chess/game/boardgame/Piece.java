@@ -10,15 +10,16 @@ public abstract class Piece {
       @ ensures this.board == board;
       @ ensures this.position == null;
       @*/
-    public Piece(Board board) {
+    public /*@ pure @*/ Piece(Board board) {
         this.board = board;
         position = null;
     }
 
     /*@ protected normal_behavior
       @ ensures \result == board;
+      @ assignable \nothing;
       @*/
-    protected /*@ spec_public @*/ Board getBoard() {
+    protected /*@ pure spec_public @*/ Board getBoard() {
         return board;
     }
 

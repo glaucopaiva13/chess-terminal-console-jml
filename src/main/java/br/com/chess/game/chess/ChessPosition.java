@@ -36,6 +36,7 @@ public class ChessPosition {
 
     /*@ public normal_behavior
     @ ensures \result == row;
+    @ assignable \nothing;
     @*/
     public /*@ pure @*/ Integer getRow() {
         return row;
