@@ -5,7 +5,6 @@ import br.com.chess.game.boardgame.Piece;
 import br.com.chess.game.boardgame.Position;
 import br.com.chess.game.chess.utils.Color;
 
-
 public abstract class ChessPiece extends Piece {
     private /*@ spec_public @*/ Color color;
     private /*@ spec_public @*/ int moveCount;
@@ -57,7 +56,8 @@ public abstract class ChessPiece extends Piece {
 
     /*@ protected normal_behavior
     @ requires position != null;
-    @ requires getBoard() != null && getBoard().positionExists(position);
+    @ requires getBoard() != null;
+    @ requires getBoard().positionExists(position);
     @ requires getBoard().piece(position) == null || getBoard().piece(position) instanceof ChessPiece;
     @ assignable \nothing;
     @ ensures \result <==> (getBoard().piece(position) != null && ((ChessPiece) getBoard().piece(position)).getColor() != color);
@@ -66,11 +66,13 @@ public abstract class ChessPiece extends Piece {
         /*@ nullable @*/ ChessPiece p = (ChessPiece)getBoard().piece(position);
         return p != null && p.getColor() != color;
     }
-
+    
     /*@ public normal_behavior
     @ requires position != null;
-    @ requires 0 <= position.getRow() && position.getRow() < 8;
-    @ requires 0 <= position.getColumn() && position.getColumn() < 8;
+    @ requires 0 <= position.getRow();
+    @ requires position.getRow() < 8;
+    @ requires 0 <= position.getColumn();
+    @ requires position.getColumn() < 8;
     @ assignable \nothing;
     @ ensures \result != null;
     @ ensures \result.getColumn() == (char) ('a' + position.getColumn());
