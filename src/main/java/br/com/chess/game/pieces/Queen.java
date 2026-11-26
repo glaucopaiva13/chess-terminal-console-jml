@@ -5,17 +5,35 @@ import br.com.chess.game.boardgame.Position;
 import br.com.chess.game.chess.ChessPiece;
 import br.com.chess.game.chess.utils.Color;
 
+// CONCLUÍDO
+
 public class Queen extends ChessPiece {
 
-
+    /*@ public normal_behavior
+    @ requires board != null;
+    @ requires color != null;
+    @ ensures this.board == board;
+    @ ensures this.color == color;
+     @*/
     public Queen(Board board, Color color) {
         super(board, color);
     }
 
-    public String toString(){
+    public /*@ skipesc @*/ String toString(){
         return "A";
     }
 
+    /*@ also
+    @ requires getBoard() != null;
+    @ requires position != null;
+    @ requires getBoard().positionExists(position);
+    @ requires getBoard().getRows() > 0;
+    @ requires getBoard().getColumns() > 0;
+    @ assignable \nothing;
+    @ ensures \result != null;
+    @ ensures \fresh(\result);
+    @ ensures \result.length == getBoard().getRows();
+    @*/
     @Override
     public boolean[][] possibleMoves() {
         boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
