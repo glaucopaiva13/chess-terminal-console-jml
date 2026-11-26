@@ -8,30 +8,70 @@ import br.com.chess.game.chess.utils.Color;
 
 public class King extends ChessPiece {
 
-    private ChessMatch chessMatch;
+    private /*@ spec_public @*/ ChessMatch chessMatch;
 
-    public King(Board board, Color color, ChessMatch chessMatch) {
+    /*@ public normal_behavior
+    @ requires board != null;
+    @ requires color != null;
+    @ requires chessMatch != null;
+    @ ensures this.board == board;
+    @ ensures this.color == color;
+    @ ensures this.chessMatch == chessMatch;
+    @*/
+    public /*@ pure @*/ King(Board board, Color color, ChessMatch chessMatch) {
         super(board, color);
         this.chessMatch = chessMatch;
     }
-    public ChessMatch getChessMatch() {
+
+    /*@ public normal_behavior
+    @ ensures \result == chessMatch;
+     */
+    public /*@ spec_pure @*/ ChessMatch getChessMatch() {
         return chessMatch;
     }
+
     @Override
-    public String toString(){
+    public /*@ skipesc @*/ String toString(){
         return "R";
     }
 
+    /*@ private normal_behavior
+    @ requires getBoard() != null;
+    @ requires position != null;
+    @ requires getBoard().positionExists(position);
+    @ requires getBoard().piece(position) == null || getBoard().piece(position) instanceof ChessPiece;
+    @ assignable \nothing;
+    @ ensures \result <==> (getBoard().piece(position) == null || ((ChessPiece) getBoard().piece(position)).getColor() != getColor());
+    @*/
     private boolean canMove(Position position){
         ChessPiece p = (ChessPiece)getBoard().piece(position);
         return  p == null || p.getColor() != getColor();
     }
 
+    /*@ private normal_behavior
+    @ requires getBoard() != null;
+    @ requires position != null;
+    @ requires getBoard().positionExists(position);
+    @ requires getBoard().piece(position) == null || getBoard().piece(position) instanceof ChessPiece;
+    @ assignable \nothing;
+    @ ensures \result <==> (getBoard().piece(position) instanceof Rook && ((ChessPiece) getBoard().piece(position)).getColor() == getColor() && ((ChessPiece) getBoard().piece(position)).getMoveCount() == 0);
+    @*/
     private boolean testRookCastling(Position position){
         ChessPiece p = (ChessPiece)getBoard().piece(position);
         return position !=null && p instanceof Rook && getColor() == getColor() && p.getMoveCount() == 0;
     }
 
+    /*@ also
+    @ requires getBoard() != null;
+    @ requires position != null;
+    @ requires getBoard().positionExists(position);
+    @ requires getBoard().getRows() > 0;
+    @ requires getBoard().getColumns() > 0;
+    @ assignable \nothing;
+    @ ensures \result != null;
+    @ ensures \fresh(\result);
+    @ ensures \result.length == getBoard().getRows();
+    @*/
     @Override
     public boolean[][] possibleMoves() {
         boolean[][] mat= new boolean[getBoard().getRows()][getBoard().getColumns()];
