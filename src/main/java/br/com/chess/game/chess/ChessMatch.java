@@ -69,7 +69,7 @@ public class ChessMatch {
     /*@ public normal_behavior
     @ ensures board != null;
     @ ensures board.getRows() == 8;
-    @ ensures board.getColumns == 8;
+    @ ensures board.getColumns() == 8;
     @ ensures turn == 1;
     @ ensures currentPlayer == Color.WHITE;
     @*/

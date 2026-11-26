@@ -15,7 +15,7 @@ public abstract class ChessPiece extends Piece {
     @ ensures this.color == color;
     @ ensures this.board == board;
      */
-    public /*@ pure @*/ChessPiece(Board board, Color color) {
+    public /*@ pure @*/ ChessPiece(Board board, Color color) {
         super(board);
         this.color = color;
     }
