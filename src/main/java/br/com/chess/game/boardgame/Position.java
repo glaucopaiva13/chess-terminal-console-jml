@@ -7,22 +7,23 @@ public class Position {
     private /*@ spec_public @*/ int column;
 
     /*@ public normal_behavior
-      @ ensures this.row == row;
-      @ ensures this.column == column;
-      @*/
+    @ ensures this.row == row;
+    @ ensures this.column == column;
+    @*/
     public /*@ pure @*/ Position(int row, int column) {
         this.row = row;
         this.column = column;
     }
 
     /*@ public normal_behavior
-      @ ensures \result == row;
-      @*/
+    @ ensures \result == row;
+    @*/
     public /*@ pure @*/ int getRow() {
         return row;
     }
 
     /*@ public normal_behavior
+    @ assignable this.row; 
     @ ensures this.row == row; 
     @*/
     public void setRow(int row) {
