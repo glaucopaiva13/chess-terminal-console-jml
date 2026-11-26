@@ -6,6 +6,8 @@ import br.com.chess.game.chess.ChessMatch;
 import br.com.chess.game.chess.ChessPiece;
 import br.com.chess.game.chess.utils.Color;
 
+// CONCLUÍDO
+
 public class King extends ChessPiece {
 
     private /*@ spec_public @*/ ChessMatch chessMatch;
