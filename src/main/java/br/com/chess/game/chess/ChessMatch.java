@@ -41,7 +41,7 @@ public class ChessMatch {
     /*@ public normal_behavior
     @ ensures \result == check;
     @*/
-    public boolean isCheck() {
+    public /*@ pure @*/ boolean isCheck() {
         return check;
     }
 
@@ -55,7 +55,7 @@ public class ChessMatch {
     /*@ public normal_behavior
     @ ensures \result == enPassantVulnerable;
     @*/
-    public ChessPiece getEnPassantVulnerable() {
+    public /*@ spec_pure @*/ ChessPiece getEnPassantVulnerable() {
         return enPassantVulnerable;
     }
 
