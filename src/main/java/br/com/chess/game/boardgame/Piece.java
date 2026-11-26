@@ -18,6 +18,7 @@ public abstract class Piece {
     /*@ protected normal_behavior
       @ ensures \result == board;
       @ assignable \nothing;
+      @ spec_public
       @*/
     protected /*@ spec_pure @*/ Board getBoard() {
         return board;

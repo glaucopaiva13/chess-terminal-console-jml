@@ -37,12 +37,14 @@ public class Position {
     }
 
     //@ public normal_behavior
+    //@ assignable this.column;
     //@ ensures this.column == column;
     public void setColumn(int column) {
         this.column = column;
     }
 
     //@ public normal_behavior
+    //@ assignable this.row, this.column;
     //@ ensures this.row == row;
     //@ ensures this.column == column;
     public void setValues(int row, int column) {

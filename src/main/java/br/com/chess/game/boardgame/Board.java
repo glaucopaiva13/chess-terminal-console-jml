@@ -42,14 +42,14 @@ public class Board {
     /*@ public normal_behavior
       @ ensures \result == rows;
       @*/
-    public /*@ pure @*/ Integer getRows() {
+    public /*@ spec_pure @*/ Integer getRows() {
         return rows;
     }
 
     /*@ public normal_behavior
       @ ensures \result == columns;
       @*/
-    public /*@ pure @*/ Integer getColumns() {
+    public /*@ spec_pure @*/ Integer getColumns() {
         return columns;
     }
 
