@@ -95,7 +95,7 @@ public class ChessMatch {
     @           (\forall int j; 0 <= j && j < board.getColumns();
     @             \result[i][j] == board.piece(i, j)));
     @*/
-    public /*@ pure nullable @*/ ChessPiece[][] getPieces() {
+    public /*@ spec_pure nullable @*/ ChessPiece[][] getPieces() {
         /*@ nullable @*/ ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
         /*@ loop_invariant 0 <= i && i <= board.getRows();
         @ loop_invariant (\forall int r; 0 <= r && r < i;
